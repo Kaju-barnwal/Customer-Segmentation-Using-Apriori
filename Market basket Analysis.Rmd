@@ -75,14 +75,9 @@ itemFrequencyPlot(Groceries, topN=10, type="absolute",
                   col="steelblue", main="Top 10 Items by Frequency")
 📝 Insight: Whole milk, other vegetables, and rolls/buns dominate.
 This indicates staple items often co-occur with other products.
-
-![Top 20 Items](https://github.com/Kaju-barnwal/Customer-Segmentation-Using-Apriori/blob/c0682144a78f9d3fa9cbda8750265b87ee708a5b/images/frequent_items_plot_apriori.png)
-
-
-![Apriori Plot](images/frequent_items_plot_apriori.png)
-![Network Graph](images/Network_Graph.png)
-![Scatter Plot](images/Scatter_plot.png)
-
+ # Plots are in image file with name :
+# frequent_item_plot
+# frequent_item_plot_apriori
 
 📐 Step 5: Association Rule Mining (Apriori)
 Now, let’s generate association rules.
@@ -149,7 +144,7 @@ plot(rule_s[1:10], method="graph", control=list(layout="circle"), shading = "lif
 The network graph highlights how items are connected.
 Clusters form around frequently bought staples (milk, vegetables, bread).
 
-![Network_Graph](images/Network_Graph.png)
+# Network_Graph plot
 
 🚀 Business Insights
 Cross-Selling: Promote “rice + other vegetables” bundles.
@@ -165,7 +160,7 @@ plot(rules, method = "scatterplot", measure = c("support", "confidence"), shadin
 plot (method = "scatterplot"): creates a support vs. confidence plot.
 shading = "lift": color-encodes rules by lift value.
 
-![Scatter_plot](images/Scatter_plot.png)
+# Scatter_plot
 
 📝 Conclusion
 Market Basket Analysis helps retailers understand shopping patterns.
@@ -176,6 +171,7 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision-making using R.
+
 
 
 
