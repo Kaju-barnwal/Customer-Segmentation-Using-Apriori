@@ -76,7 +76,8 @@ itemFrequencyPlot(Groceries, topN=10, type="absolute",
 📝 Insight: Whole milk, other vegetables, and rolls/buns dominate.
 This indicates staple items often co-occur with other products.
 
-
+![Plot 1](images/frequet_item_plot.png)
+![Plot 1](images/frequet_items_plot_apriori.png)
 
 📐 Step 5: Association Rule Mining (Apriori)
 Now, let’s generate association rules.
@@ -143,6 +144,8 @@ plot(rule_s[1:10], method="graph", control=list(layout="circle"), shading = "lif
 The network graph highlights how items are connected.
 Clusters form around frequently bought staples (milk, vegetables, bread).
 
+![Plot 1](images/Network_Graph.png)
+
 🚀 Business Insights
 Cross-Selling: Promote “rice + other vegetables” bundles.
 
@@ -157,6 +160,8 @@ plot(rules, method = "scatterplot", measure = c("support", "confidence"), shadin
 plot (method = "scatterplot"): creates a support vs. confidence plot.
 shading = "lift": color-encodes rules by lift value.
 
+![Plot 1](images/Scatter_plot.png)
+
 📝 Conclusion
 Market Basket Analysis helps retailers understand shopping patterns.
 
@@ -166,6 +171,7 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision-making using R.
+
 
 
 
