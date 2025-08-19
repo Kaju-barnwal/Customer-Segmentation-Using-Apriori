@@ -76,8 +76,11 @@ itemFrequencyPlot(Groceries, topN=10, type="absolute",
 📝 Insight: Whole milk, other vegetables, and rolls/buns dominate.
 This indicates staple items often co-occur with other products.
 
-![Plot of Frequent item](images/frequent_item_plot.png)
-![Plot of Frequent item by apriori](images/frequent_items_plot_apriori.png)
+![Top 10 Items](images/frequet_item_plot.png)
+![Apriori Plot](images/frequet_items_plot_apriori.png)
+![Network Graph](images/Network_Graph.png)
+![Scatter Plot](images/Scatter_plot.png)
+
 
 📐 Step 5: Association Rule Mining (Apriori)
 Now, let’s generate association rules.
@@ -171,6 +174,7 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision-making using R.
+
 
 
 
