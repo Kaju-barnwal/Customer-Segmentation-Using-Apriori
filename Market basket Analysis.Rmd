@@ -35,7 +35,7 @@ Groceries
 
 Stored as a sparse transaction matrix
 
-🔍 Step 2: Explore the Data
+# 🔍 Step 2: Explore the Data
 
 summary(Groceries)
 
@@ -57,7 +57,7 @@ Basket 3 → {whole milk}
 
 Whole milk appears frequently across baskets.
 
-⚡ Step 3:Frequent Itemset Mining (Eclat)
+# ⚡ Step 3:Frequent Itemset Mining (Eclat)
 We use the Eclat algorithm to find frequent itemsets.
 
 
@@ -67,7 +67,7 @@ Found 333 itemsets with a minimum support 1%
 
 Example: {whole milk, yogurt} appears in 2.9% transactions
 
-📊 Step 4:  Item Frequency Analysis and visualizing according to the number and percentage.
+# 📊 Step 4:  Item Frequency Analysis and visualizing according to the number and percentage.
 Let’s see which items are most purchased.
 
 
@@ -79,7 +79,7 @@ This indicates staple items often co-occur with other products.
 # frequent_item_plot
 # frequent_item_plot_apriori
 
-📐 Step 5: Association Rule Mining (Apriori)
+# 📐 Step 5: Association Rule Mining (Apriori)
 Now, let’s generate association rules.
 
 rules <- apriori(Groceries, parameter = list(supp=0.002, conf=0.6))
@@ -91,7 +91,7 @@ Minimum confidence: 60%
 
 Rules generated: 1098
 
-📌 Step 6: Understanding Rule Metrics
+# 📌 Step 6: Understanding Rule Metrics
 Support: Frequency of {lhs + rhs} / Total transactions
 
 Confidence: Probability of RHS given LHS
@@ -111,7 +111,7 @@ Lift = 2.51
 
 📝 Interpretation: Shoppers buying cereals are 2.51× more likely to also buy whole milk.
 
-🔝 Step 7: Top Rules by Lift & Confidence
+# 🔝 Step 7: Top Rules by Lift & Confidence
 
 top_rules <- sort(rules, by="lift", decreasing=TRUE)
 inspect(head(top_rules, 10))
@@ -135,7 +135,7 @@ Lift = 4.57 (very strong link)
 
 This is valuable for targeted promotions.
 
-🎨 Step 8: Rule Visualization by network graph and scatterplot
+# 🎨 Step 8: Rule Visualization by network graph and scatterplot
 
 Network Graph
 
@@ -162,7 +162,7 @@ shading = "lift": color-encodes rules by lift value.
 
 # Scatter_plot
 
-📝 Conclusion
+# 📝 Conclusion
 Market Basket Analysis helps retailers understand shopping patterns.
 
 Using Eclat & Apriori, we discovered strong associations in the Groceries dataset.
@@ -171,6 +171,7 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision-making using R.
+
 
 
 
