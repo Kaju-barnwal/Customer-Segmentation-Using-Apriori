@@ -7,7 +7,7 @@ output: html_document
 
 
 
-# 🛒 Market Basket Analysis (MBA) with R
+# 🛒 Market Basket Analysis with R using Apriori Algorithm
 
 ## ✨ Introduction
 
@@ -25,7 +25,7 @@ library(arules)
 library(arulesViz)
 library(RColorBrewer)
 
-# Load dataset
+# Load Dataset
 data("Groceries")
 Groceries
 9835 transactions (shopping baskets)
@@ -164,4 +164,5 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision-making using R.
+
 
