@@ -21,7 +21,6 @@ The goal is to find frequent item combinations and generate business insights fo
 
 ## 📂 Step 1: Load Packages & Data
 
-```{r setup, message=FALSE, warning=FALSE}
 library(arules)
 library(arulesViz)
 library(RColorBrewer)
@@ -162,5 +161,6 @@ Market Basket Analysis helps retailers understand shopping patterns.
 Using Eclat & Apriori, we discovered strong associations in the Groceries dataset.
 
 Such insights can drive recommendation systems, targeted ads, and store placement strategies.
+
 
 This project demonstrates data-driven retail decision making using R.
