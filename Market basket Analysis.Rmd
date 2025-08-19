@@ -32,7 +32,7 @@ Groceries
 
 169 unique items
 
-Stored as sparse transaction matrix
+Stored as a sparse transaction matrix
 
 🔍 Step 2: Explore the Data
 
@@ -76,7 +76,7 @@ itemFrequencyPlot(Groceries, topN=10, type="absolute",
 This indicates staple items often co-occur with other products.
 
 
-📐 Step 5: Association Rule Mining (Apriori)
+Step 5: Association Rule Mining (Apriori)
 Now, let’s generate association rules.
 
 rules <- apriori(Groceries, parameter = list(supp=0.002, conf=0.6))
@@ -164,3 +164,4 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision making using R.
+
