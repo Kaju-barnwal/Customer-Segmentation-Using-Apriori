@@ -33,21 +33,21 @@ Groceries
 
 169 unique items
 
-Stored as sparse transaction matrix
+Stored as a sparse transaction matrix
 
 🔍 Step 2: Explore the Data
 
 summary(Groceries)
 
-it explains. how frequent each item has been bought and length of each basket, 
-such as frequency of item bought:
-  whole milk - 2513,  other vegetables - 1903,rolls/buns - 1809, soda - 1715 ...
+It explains. how frequently each item has been bought and the length of each basket, 
+such as the frequency of items bought:
+  whole milk - 2513,  other vegetables - 1903, rolls/buns - 1809, soda - 1715 ...
 length of each basket:
    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18 
 2159 1643 1299 1005  855  645  545  438  350  246  182  117   78   77   55   46   29   14 
 
 inspect(head(Groceries, 3))
-We see first few baskets: 
+We see the first few baskets: 
 
 Basket 1 → {citrus fruit, semi-finished bread, margarine, ready soups}
 
@@ -55,19 +55,19 @@ Basket 2 → {tropical fruit, yogurt, coffee}
 
 Basket 3 → {whole milk}
 
-Clearly, whole milk appears frequently across baskets.
+Whole milk appears frequently across baskets.
 
 ⚡ Step 3:Frequent Itemset Mining (Eclat)
-We use Eclat algorithm to find frequent itemsets.
+We use the Eclat algorithm to find frequent itemsets.
 
 
 F_I <- eclat(Groceries, parameter = list(supp=0.01, maxlen=10))
 inspect(head(F_I, 10))
-Found 333 itemsets with minimum support 1%
+Found 333 itemsets with a minimum support 1%
 
 Example: {whole milk, yogurt} appears in 2.9% transactions
 
-📊 Step 4:  Item Frequency Analysis and visualizing according to no. and percentage.
+📊 Step 4:  Item Frequency Analysis and visualizing according to the number and percentage.
 Let’s see which items are most purchased.
 
 
@@ -138,7 +138,7 @@ This is valuable for targeted promotions.
 Network Graph
 
 rule_s<- sort(rules)
-plot(rule_s[1:10], method="graph", control=list(layout="circle"),shading = "lift", col = c("skyblue", "orange", "lightgreen"))  # circular layout
+plot(rule_s[1:10], method="graph", control=list(layout="circle"), shading = "lift", col = c("skyblue", "orange", "lightgreen"))  # circular layout
 The network graph highlights how items are connected.
 Clusters form around frequently bought staples (milk, vegetables, bread).
 
@@ -163,4 +163,5 @@ Using Eclat & Apriori, we discovered strong associations in the Groceries datase
 
 Such insights can drive recommendation systems, targeted ads, and store placement strategies.
 
-This project demonstrates data-driven retail decision making using R.
+
+This project demonstrates data-driven retail decision-making using R.
