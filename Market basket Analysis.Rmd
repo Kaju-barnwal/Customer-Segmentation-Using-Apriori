@@ -1,0 +1,166 @@
+---
+title: "Market_Basket_Analysis"
+author: "Kajal Kumari"
+date: "2025-08-19"
+output: html_document
+---
+
+
+
+# 🛒 Market Basket Analysis (MBA) with R
+
+## ✨ Introduction
+
+Have you ever wondered **why online stores recommend products like *“Customers who bought bread also bought butter”***?  
+This is powered by **Market Basket Analysis (MBA)**, a data mining technique that uncovers hidden associations between items purchased together.
+
+In this project, I apply **MBA using R** on the famous **Groceries dataset**.  
+The goal is to find frequent item combinations and generate business insights for **cross-selling & recommendations**.
+
+---
+
+## 📂 Step 1: Load Packages & Data
+
+```{r setup, message=FALSE, warning=FALSE}
+library(arules)
+library(arulesViz)
+library(RColorBrewer)
+
+# Load dataset
+data("Groceries")
+Groceries
+9835 transactions (shopping baskets)
+
+169 unique items
+
+Stored as sparse transaction matrix
+
+🔍 Step 2: Explore the Data
+
+summary(Groceries)
+
+it explains. how frequent each item has been bought and length of each basket, 
+such as frequency of item bought:
+  whole milk - 2513,  other vegetables - 1903,rolls/buns - 1809, soda - 1715 ...
+length of each basket:
+   1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18 
+2159 1643 1299 1005  855  645  545  438  350  246  182  117   78   77   55   46   29   14 
+
+inspect(head(Groceries, 3))
+We see first few baskets: 
+
+Basket 1 → {citrus fruit, semi-finished bread, margarine, ready soups}
+
+Basket 2 → {tropical fruit, yogurt, coffee}
+
+Basket 3 → {whole milk}
+
+Clearly, whole milk appears frequently across baskets.
+
+⚡ Step 3:Frequent Itemset Mining (Eclat)
+We use Eclat algorithm to find frequent itemsets.
+
+
+F_I <- eclat(Groceries, parameter = list(supp=0.01, maxlen=10))
+inspect(head(F_I, 10))
+Found 333 itemsets with minimum support 1%
+
+Example: {whole milk, yogurt} appears in 2.9% transactions
+
+📊 Step 4:  Item Frequency Analysis and visualizing according to no. and percentage.
+Let’s see which items are most purchased.
+
+
+itemFrequencyPlot(Groceries, topN=10, type="absolute",
+                  col="steelblue", main="Top 10 Items by Frequency")
+📝 Insight: Whole milk, other vegetables, and rolls/buns dominate.
+This indicates staple items often co-occur with other products.
+
+
+📐 Step 5: Association Rule Mining (Apriori)
+Now, let’s generate association rules.
+
+rules <- apriori(Groceries, parameter = list(supp=0.002, conf=0.6))
+summary(rules)
+inspect(head(rules, 10))
+Minimum support: 0.2%
+
+Minimum confidence: 60%
+
+Rules generated: 1098
+
+📌 Step 6: Understanding Rule Metrics
+Support: Frequency of {lhs + rhs} / Total transactions
+
+Confidence: Probability of RHS given LHS
+
+Lift: Strength of rule ( >1 = strong association )
+
+
+inspect(rules[1:5])
+Example:
+{cereals} → {whole milk}
+
+Support = 0.003
+
+Confidence = 64%
+
+Lift = 2.51
+
+📝 Interpretation: Shoppers buying cereals are 2.51× more likely to also buy whole milk.
+
+🔝 Step 7: Top Rules by Lift & Confidence
+
+top_rules <- sort(rules, by="lift", decreasing=TRUE)
+inspect(head(top_rules, 10))
+📝 Insight:
+
+{butter, hard cheese} -> {whipped/sour cream}
+
+Confidence = 51.2%
+
+Lift = 7.15 (very strong link)
+
+top_confidence_rules <- sort(rules, by = "confidence", decreasing = TRUE)
+inspect(top_confidence_rules[1:min(10, length(top_confidence_rules))])
+📝 Insight:
+
+{citrus fruit, tropical fruit, root vegetables, whole milk} -> {other vegetables}
+
+Confidence = 88.5% (strong Confidence)
+
+Lift = 4.57 (very strong link)
+
+This is valuable for targeted promotions.
+
+🎨 Step 8: Rule Visualization by network graph and scatterplot
+
+Network Graph
+
+rule_s<- sort(rules)
+plot(rule_s[1:10], method="graph", control=list(layout="circle"),shading = "lift", col = c("skyblue", "orange", "lightgreen"))  # circular layout
+The network graph highlights how items are connected.
+Clusters form around frequently bought staples (milk, vegetables, bread).
+
+🚀 Business Insights
+Cross-Selling: Promote “rice + other vegetables” bundles.
+
+Store Layout: Place “baking powder” near “whole milk” to increase sales.
+
+Personalized Offers: Recommend “whole milk” when shoppers buy “cereals”.
+
+scatterplot
+
+plot(rules, method = "scatterplot", measure = c("support", "confidence"), shading = "lift", main = "Scatter Plot of Association Rules")
+
+plot (method = "scatterplot"): creates a support vs. confidence plot.
+shading = "lift": color-encodes rules by lift value.
+
+📝 Conclusion
+Market Basket Analysis helps retailers understand shopping patterns.
+
+Using Eclat & Apriori, we discovered strong associations in the Groceries dataset.
+
+Such insights can drive recommendation systems, targeted ads, and store placement strategies.
+
+This project demonstrates data-driven retail decision making using R.
