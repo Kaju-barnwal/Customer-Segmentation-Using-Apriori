@@ -21,7 +21,6 @@ The goal is to find frequent item combinations and generate business insights fo
 
 ## 📂 Step 1: Load Packages & Data
 
-```{r setup, message=FALSE, warning=FALSE}
 library(arules)
 library(arulesViz)
 library(RColorBrewer)
@@ -165,3 +164,4 @@ Such insights can drive recommendation systems, targeted ads, and store placemen
 
 
 This project demonstrates data-driven retail decision-making using R.
+
